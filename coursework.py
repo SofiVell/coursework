@@ -2,22 +2,9 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import sqlite3
-import csv
 import folium
 from folium.plugins import MarkerCluster
 from streamlit_folium import st_folium 
-
-conn = sqlite3.connect(r"C:\Users\user\pandas tasks\Electric_Vehicle.db")
-cursor = conn.cursor()
-
-cursor.execute("SELECT * FROM Electric_Vehicle")
-rows = cursor.fetchall()
-
-with open("Electric_Vehicle.csv", "w", newline="", encoding="utf-8") as f:
-    writer = csv.writer(f)
-    writer.writerow([desc[0] for desc in cursor.description])
-    writer.writerows(rows)
 
 df = pd.read_csv("Electric_Vehicle.csv")
 
